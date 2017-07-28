@@ -37,15 +37,32 @@ void solve2048::game2048::GameState::rotateCounterClockwise()
     cv::flip(state, state, 0);
 }
 
-std::vector<int> solve2048::game2048::GameState::row(int x)
+std::vector<int> solve2048::game2048::GameState::row(int y) const
 {
-    return (std::vector<int>)state.row(x);
+    return (std::vector<int>)state.row(y);
 }
 
-std::vector<int> solve2048::game2048::GameState::col(int y)
+std::vector<int> solve2048::game2048::GameState::col(int x) const
 {
-    return (std::vector<int>)state.col(y);
+    return (std::vector<int>)state.col(x);
 }
+
+void solve2048::game2048::GameState::setRow(int y, std::vector<int> rowVector)
+{
+    for(int x=0; x<rowVector.size(); x++)
+    {
+        cell(x,y) = rowVector[x];
+    }
+}
+
+void solve2048::game2048::GameState::setCol(int x, std::vector<int> colVector)
+{
+    for(int y=0; y<colVector.size(); y++)
+    {
+        cell(x,y) = colVector[y];
+    }
+}
+
 
 std::vector<int> solve2048::game2048::GameState::slideLine(std::vector<int> line)
 {
@@ -83,10 +100,54 @@ std::vector<int> solve2048::game2048::GameState::slideLine(std::vector<int> line
                 // rest of line is empty
                 return result;
             }
-
         }
     }
 
     return result;
 
+}
+
+solve2048::game2048::GameState solve2048::game2048::GameState::slideLeft() const
+{
+    GameState slided;
+    for (int y=0; y<state.rows; y++)
+    {
+        slided.setRow(y,slideLine(slided.row(y)));
+    }
+    return slided;
+}
+
+solve2048::game2048::GameState solve2048::game2048::GameState::slideRight() const
+{
+    GameState rotated(*this);
+    rotated.rotateClockwise();
+    rotated.rotateClockwise();
+
+    GameState slided = rotated.slideLeft();
+    
+    slided.rotateCounterClockwise();
+    slided.rotateCounterClockwise();
+    return slided;
+}
+
+solve2048::game2048::GameState solve2048::game2048::GameState::slideUp() const
+{
+    GameState rotated(*this);
+    rotated.rotateCounterClockwise();
+
+    GameState slided = rotated.slideLeft();
+    
+    slided.rotateClockwise();
+    return slided;
+}
+
+solve2048::game2048::GameState solve2048::game2048::GameState::slideDown() const
+{
+    GameState rotated(*this);
+    rotated.rotateClockwise();
+
+    GameState slided = rotated.slideLeft();
+    
+    slided.rotateCounterClockwise();
+    return slided;
 }

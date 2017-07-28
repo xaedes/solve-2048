@@ -18,10 +18,18 @@ public:
     void rotateCounterClockwise();
     cv::Mat_<int> state;
 
-    std::vector<int> row(int x);
-    std::vector<int> col(int y);
+    std::vector<int> row(int y) const;
+    std::vector<int> col(int x) const;
+
+    void setRow(int y, std::vector<int> rowVector);
+    void setCol(int x, std::vector<int> colVector);
 
     static std::vector<int> slideLine(std::vector<int> line);
+
+    GameState slideLeft() const;
+    GameState slideRight() const;
+    GameState slideUp() const;
+    GameState slideDown() const;
 };
 
 }
