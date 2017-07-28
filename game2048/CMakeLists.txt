@@ -19,6 +19,8 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 include(Common)
 
+find_package(OpenCV REQUIRED )
+
 ## Git (and its revision)
 find_package(Git QUIET) # if we don't find git or FindGit.cmake is not on the system we ignore it.
 ## GetGitRevisionDescription module to retreive branch and revision information from Git
@@ -62,8 +64,8 @@ include_directories(
 enable_testing()
 add_subdirectory(include)
 add_subdirectory(src)
+add_subdirectory(tests)
 # add_subdirectory(doc)
-# add_subdirectory(test)
 
 # 
 # SYSTEM PACKAGING (RPM, TGZ, ...)

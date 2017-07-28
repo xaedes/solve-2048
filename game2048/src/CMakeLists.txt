@@ -5,7 +5,8 @@ set(APPLICATION_NAME "${PROJECT_NAME}_run")
 prepend(LIB_HEADERS "${CMAKE_CURRENT_BINARY_DIR}/../include/${PROJECT_NAME}" ${HEADER_FILES})
 
 set(LIB_SOURCES
-	version.cpp
+    version.cpp
+	GameState.cpp
 )
 
 set(APP_HEADERS
@@ -29,6 +30,7 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES
 
 # Links the target library against the library (libprojBA)
 target_link_libraries(${LIBRARY_NAME} common)
+target_link_libraries(${LIBRARY_NAME} ${OpenCV_LIBS} )
 
 # This is a make target, so you can do a "make projBrunner"
 add_executable(${APPLICATION_NAME} ${APP_SOURCES})
@@ -45,4 +47,5 @@ target_include_directories(${LIBRARY_NAME}
     ${CMAKE_CURRENT_BINARY_DIR}/../include/
 )
 
+set (LIBRARY_NAME ${LIBRARY_NAME} PARENT_SCOPE) 
 
