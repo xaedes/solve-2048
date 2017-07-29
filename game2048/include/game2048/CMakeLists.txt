@@ -4,7 +4,12 @@ configure_file("version.h.in" "${CMAKE_CURRENT_BINARY_DIR}/version.h" @ONLY)
 
 # define publicly available header files
 set(HEADER_FILES
+    Cell.h
     GameState.h
+    Slider.h
+    Direction.h
+    Injection.h
+    InjectionMask.h
 )
 
 # expose header files to other projects

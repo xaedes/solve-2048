@@ -2,6 +2,9 @@
 
 #include <opencv2/opencv.hpp>
 #include <vector>
+#include <memory>
+
+#include "game2048/Cell.h"
 
 namespace solve2048
 {
@@ -13,23 +16,18 @@ class GameState
 public:
     GameState();
     ~GameState();
-    int& cell(int x, int y);
+    const CellValueType& cell(int x, int y) const;
+    CellValueType& cell(int x, int y);
     void rotateClockwise();
     void rotateCounterClockwise();
-    cv::Mat_<int> state;
+    cv::Mat_<CellValueType> state;
 
-    std::vector<int> row(int y) const;
-    std::vector<int> col(int x) const;
+    std::vector<CellValueType> row(int y) const;
+    std::vector<CellValueType> col(int x) const;
 
-    void setRow(int y, std::vector<int> rowVector);
-    void setCol(int x, std::vector<int> colVector);
+    void setRow(int y, std::vector<CellValueType> rowVector);
+    void setCol(int x, std::vector<CellValueType> colVector);
 
-    static std::vector<int> slideLine(std::vector<int> line);
-
-    GameState slideLeft() const;
-    GameState slideRight() const;
-    GameState slideUp() const;
-    GameState slideDown() const;
 };
 
 }

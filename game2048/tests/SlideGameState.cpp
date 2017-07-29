@@ -3,8 +3,10 @@
 #include "catch/EqualsMat.hpp"
 
 #include "game2048/GameState.h"
+#include "game2048/Slider.h"
 
 using namespace solve2048::game2048;
+using namespace solve2048::game2048::slider;
 
 TEST_CASE("GameState Slide #1 Empty", "[GameState][slideLeft][slideRight][slideUp][slideDown]" ) 
 {
@@ -27,7 +29,7 @@ TEST_CASE("GameState Slide #1 Empty", "[GameState][slideLeft][slideRight][slideU
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideLeft();
+        nextGameState = slideLeft(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -41,7 +43,7 @@ TEST_CASE("GameState Slide #1 Empty", "[GameState][slideLeft][slideRight][slideU
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideRight();
+        nextGameState = slideRight(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -55,7 +57,7 @@ TEST_CASE("GameState Slide #1 Empty", "[GameState][slideLeft][slideRight][slideU
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideUp();
+        nextGameState = slideUp(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -69,7 +71,7 @@ TEST_CASE("GameState Slide #1 Empty", "[GameState][slideLeft][slideRight][slideU
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideDown();
+        nextGameState = slideDown(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -97,7 +99,7 @@ TEST_CASE("GameState Slide #2", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideLeft();
+        nextGameState = slideLeft(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -111,7 +113,7 @@ TEST_CASE("GameState Slide #2", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideRight();
+        nextGameState = slideRight(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -125,7 +127,7 @@ TEST_CASE("GameState Slide #2", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideUp();
+        nextGameState = slideUp(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -139,7 +141,7 @@ TEST_CASE("GameState Slide #2", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 3, 4, 0
                                     );
 
-        nextGameState = gameState.slideDown();
+        nextGameState = slideDown(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -167,7 +169,7 @@ TEST_CASE("GameState Slide #3", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideLeft();
+        nextGameState = slideLeft(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -181,7 +183,7 @@ TEST_CASE("GameState Slide #3", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideRight();
+        nextGameState = slideRight(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -195,7 +197,7 @@ TEST_CASE("GameState Slide #3", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideUp();
+        nextGameState = slideUp(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -209,7 +211,7 @@ TEST_CASE("GameState Slide #3", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 4, 4, 8
                                     );
 
-        nextGameState = gameState.slideDown();
+        nextGameState = slideDown(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -237,7 +239,7 @@ TEST_CASE("GameState Slide #4", "[GameState][slideLeft][slideRight][slideUp][sli
                                     16, 16, 8, 0
                                     );
 
-        nextGameState = gameState.slideLeft();
+        nextGameState = slideLeft(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -251,7 +253,7 @@ TEST_CASE("GameState Slide #4", "[GameState][slideLeft][slideRight][slideUp][sli
                                     0, 16, 8, 16
                                     );
 
-        nextGameState = gameState.slideRight();
+        nextGameState = slideRight(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -265,7 +267,7 @@ TEST_CASE("GameState Slide #4", "[GameState][slideLeft][slideRight][slideUp][sli
                                     16, 0, 0, 0
                                     );
 
-        nextGameState = gameState.slideUp();
+        nextGameState = slideUp(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -279,7 +281,7 @@ TEST_CASE("GameState Slide #4", "[GameState][slideLeft][slideRight][slideUp][sli
                                     16, 8, 8, 8
                                     );
 
-        nextGameState = gameState.slideDown();
+        nextGameState = slideDown(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -307,7 +309,7 @@ TEST_CASE("GameState Slide #5", "[GameState][slideLeft][slideRight][slideUp][sli
                                     13,  14, 15, 16
                                     );
 
-        nextGameState = gameState.slideLeft();
+        nextGameState = slideLeft(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -321,7 +323,7 @@ TEST_CASE("GameState Slide #5", "[GameState][slideLeft][slideRight][slideUp][sli
                                     13,  14, 15, 16
                                     );
 
-        nextGameState = gameState.slideRight();
+        nextGameState = slideRight(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -335,7 +337,7 @@ TEST_CASE("GameState Slide #5", "[GameState][slideLeft][slideRight][slideUp][sli
                                     13,  14, 15, 16
                                     );
 
-        nextGameState = gameState.slideUp();
+        nextGameState = slideUp(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }
@@ -349,7 +351,7 @@ TEST_CASE("GameState Slide #5", "[GameState][slideLeft][slideRight][slideUp][sli
                                     13,  14, 15, 16
                                     );
 
-        nextGameState = gameState.slideDown();
+        nextGameState = slideDown(gameState);
 
         REQUIRE_THAT(nextGameState.state, EqualsMat(nextGameStateReference.state));
     }

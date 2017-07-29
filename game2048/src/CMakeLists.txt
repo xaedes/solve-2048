@@ -6,7 +6,10 @@ prepend(LIB_HEADERS "${CMAKE_CURRENT_BINARY_DIR}/../include/${PROJECT_NAME}" ${H
 
 set(LIB_SOURCES
     version.cpp
-	GameState.cpp
+    GameState.cpp
+    Slider.cpp
+    Injection.cpp
+	InjectionMask.cpp
 )
 
 set(APP_HEADERS

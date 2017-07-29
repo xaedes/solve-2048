@@ -6,6 +6,11 @@
 
 using namespace solve2048::game2048;
 
+CellValueType getCellValueFromConstGameState(const GameState& gameState, int x, int y)
+{
+    return gameState.cell(x,y);
+}
+
 TEST_CASE("Starting with an empty GameState", "[GameState]" ) 
 {
     GameState gameState;
@@ -30,6 +35,19 @@ TEST_CASE("Starting with an empty GameState", "[GameState]" )
             {
                 gameState.cell(x,y)=k;
                 REQUIRE(gameState.cell(x,y) == k);
+                k++;
+            }
+        }
+    }
+    SECTION("const get")
+    {
+        int k=1;
+        for (int y=0; y<4; y++)
+        {
+            for (int x=0; x<4; x++)
+            {
+                gameState.cell(x,y)=k;
+                REQUIRE(getCellValueFromConstGameState(gameState,x,y) == k);
                 k++;
             }
         }

@@ -3,8 +3,10 @@ set(APPLICATION_NAME_PREFIX "test_${PROJECT_NAME}_")
 set(TEST_PROGRAMS
     GameStateDataAccess
     GameStateRotation
-    GameStateSlide
-    GameStateSlideLine
+    Injection
+    InjectionMask
+    SlideGameState
+    SlideLine
 )
 
 include_directories ($<TARGET_PROPERTY:catch,INTERFACE_INCLUDE_DIRECTORIES>)
